@@ -41,13 +41,13 @@ public class SocketClient {
     public void writeNewString() throws IOException{
     	ObjectOutputStream writer = new ObjectOutputStream(socketClient.getOutputStream());
         try {
-            Thread.sleep(1000);
+            Thread.sleep(5000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
         writer.writeBytes("New String from Client 1");
 		writer.flush();
-        writer.close();
+        //writer.close();
     }
 
     public static void main(String arg[]){

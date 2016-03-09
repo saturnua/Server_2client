@@ -2,7 +2,6 @@ package io.syntx.socketServer;
 
 import java.io.*;
 import java.net.Socket;
-import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -42,16 +41,13 @@ public class SocketClientHandler implements Runnable {
 	private void readResponse() throws IOException, InterruptedException {
         String clientInput="";
         BufferedReader stdIn = new BufferedReader(new InputStreamReader(client.getInputStream()));
-        //while ((clientInput = stdIn.readLine()) != null) {
-                System.out.println("REQUEST TO SEND TIME RECEIVED. SENDING CURRENT TIME");
+                System.out.println("String from client recive and add to List");
                setListOfStrings(clientInput);
-                //break;
 
-        //}
 	}
     private void sendToClient() throws IOException, InterruptedException {
-        setListOfStrings("First string");
-        setListOfStrings("Second string");
+        //setListOfStrings("First string");
+       // setListOfStrings("Second string");
         try {
             sendList();
         } catch (IOException e) {
@@ -65,7 +61,8 @@ public class SocketClientHandler implements Runnable {
 		ObjectOutputStream writer = new ObjectOutputStream(client.getOutputStream());
 		writer.writeObject(getListOfStrings());
 		writer.flush();
-		writer.close();
+        System.out.println(getListOfStrings().size());
+		//writer.close();
 	}
 
 }
